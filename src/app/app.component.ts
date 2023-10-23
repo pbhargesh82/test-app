@@ -348,64 +348,6 @@ export class AppComponent {
     console.log(this.buttonMap);
   }
 
-  // selectVariant(option: any, selectedVariant: any): void {
-  //   let isMaterialChanged = false;
-  //   let isColorChanged = false;
-  //   let isSizeChanged = false;
-
-  //   if (option.name === 'Material') {
-  //     this.selectedMaterialKey = selectedVariant.var_key;
-  //     this.selectedMaterial = selectedVariant.variant_name;
-  //     isMaterialChanged = true;
-  //   } else if (option.name === 'Color') {
-  //     this.selectedColorKey = selectedVariant.var_key;
-  //     this.selectedColor = selectedVariant.variant_name;
-  //     isColorChanged = true;
-  //   } else if (option.name === 'Size') {
-  //     this.selectedSizeKey = selectedVariant.var_key;
-  //     this.selectedSize = selectedVariant.variant_name;
-  //     isSizeChanged = true;
-  //   }
-  //   this.selectedArticleKey = `${this.selectedMaterialKey}-${this.selectedColorKey}-${this.selectedSizeKey}`;
-
-  //   const selectedArticle = this.productArticleList.find(
-  //     (item: any) => item.article_auto === this.selectedArticleKey
-  //   );
-
-  //   if (selectedArticle && selectedArticle.status === false) {
-  //     let relevantProduct;
-
-  //     if (isMaterialChanged) {
-  //       relevantProduct = this.productArticleList.find((item: any) => {
-  //         return (
-  //           item.material === this.selectedMaterial && item.status === true
-  //         );
-  //       });
-  //     }
-
-  //     if (isColorChanged) {
-  //       relevantProduct = this.productArticleList.find((item: any) => {
-  //         return item.color === this.selectedColor && item.status === true;
-  //       });
-  //     }
-
-  //     if (isSizeChanged) {
-  //       relevantProduct = this.productArticleList.find((item: any) => {
-  //         return item.size === this.selectedSize && item.status === true;
-  //       });
-  //     }
-
-  //     if (relevantProduct) {
-  //       this.selectedArticleKey = relevantProduct.article_auto;
-  //       const splitedArticleData = relevantProduct.article_auto.split('-');
-  //       this.selectedMaterialKey = splitedArticleData[0];
-  //       this.selectedColorKey = splitedArticleData[1];
-  //       this.selectedSizeKey = splitedArticleData[2];
-  //     }
-  //   }
-  //   this.generateButtonMapKeys();
-  // }
-
   selectVariant(option: any, selectedVariant: any): void {
     const { name } = option;
     const { var_key: selectedVarKey, variant_name: selectedVariantName } =
