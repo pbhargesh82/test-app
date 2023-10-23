@@ -1,0 +1,36 @@
+.product-variant-selector {
+  font-family: "Poppins", sans-serif;
+}
+
+.variant-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Define the button style for all states */
+.variant-options button {
+  all: unset;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #333333;
+  /* border-color: #cccccc; */
+}
+
+/* Define specific styles for each state */
+.variant-options .selected {
+  background-color: #ffaa80 !important;
+  color: #ffffff !important;
+  /* border-color: #ffaa80 !important; */
+}
+
+.variant-options .disabled {
+  background-color: #e5e5e5;
+  color: #b0b0b0;
+  /* border-color: #b0b0b0; */
+  cursor: not-allowed;
+}
