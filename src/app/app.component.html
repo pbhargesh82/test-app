@@ -1,4 +1,4 @@
-<div class="product-variant-selector">
+<!-- <div class="product-variant-selector">
   <div *ngFor="let option of productOptions">
     <h3>{{ option.name }}</h3>
     <div class="variant-options">
@@ -14,6 +14,23 @@
         }"
       >
         {{ variant.variant_name }}
+      </button>
+    </div>
+  </div>
+</div> -->
+
+<!-- ------------------------ new code ----------------------------  -->
+
+<div class="product-variant-selector">
+  <div *ngFor="let option of productOptions2">
+    <h3>{{ option.name }}</h3>
+    <div class="variant-options">
+      <button
+        *ngFor="let variant of option.variants"
+        (click)="selectVariant2(option, variant)"
+        [class.selected]="isVariantSelected(variant.var_key)"
+      >
+        {{ variant.variant_name }} - {{ variant.var_key }}
       </button>
     </div>
   </div>
