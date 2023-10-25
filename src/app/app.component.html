@@ -25,13 +25,15 @@
   <div *ngFor="let option of productOptions2">
     <h3>{{ option.name }}</h3>
     <div class="variant-options">
-      <button
-        *ngFor="let variant of option.variants"
-        (click)="selectVariant2(option, variant)"
-        [class.selected]="isVariantSelected(variant.var_key)"
-      >
-        {{ variant.variant_name }} - {{ variant.var_key }}
-      </button>
+      <ng-container *ngFor="let variant of option.variants">
+        <button
+          *ngIf="variant.status"
+          (click)="selectVariant2(option, variant)"
+          [class.selected]="isVariantSelected(variant.var_key)"
+        >
+          {{ variant.variant_name }} - {{ variant.var_key }}
+        </button>
+      </ng-container>
     </div>
   </div>
 </div>
