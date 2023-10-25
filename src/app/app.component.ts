@@ -1079,87 +1079,88 @@ export class AppComponent {
 
       this.buttonMap.forEach((button: any) => {
         if (articleParts.includes(button.key)) {
-          console.log(button);
           button.selected = true;
         }
       });
     }
 
-    this.buttonMap = [
-      {
-        key: 'mtl',
-        name: 'Metal',
-        selected: true,
-        category: 'Material',
-        article_key: 'mtl-rd-sm-apl',
-      },
-      {
-        key: 'wd',
-        name: 'Wood',
-        selected: false,
-        category: 'Material',
-        article_key: 'wd-rd-sm-apl',
-      },
-      {
-        key: 'rd',
-        name: 'Red',
-        selected: true,
-        category: 'Color',
-        article_key: 'mtl-rd-sm-apl',
-      },
-      {
-        key: 'grn',
-        name: 'Green',
-        selected: false,
-        category: 'Color',
-        article_key: 'mtl-grn-sm-apl',
-      },
-      {
-        key: 'bl',
-        name: 'Blue',
-        selected: false,
-        category: 'Color',
-        article_key: 'mtl-bl-sm-apl',
-      },
-      {
-        key: 'sm',
-        name: 'Small',
-        selected: true,
-        category: 'Size',
-        article_key: 'mtl-rd-sm-apl',
-      },
-      {
-        key: 'md',
-        name: 'Medium',
-        selected: false,
-        category: 'Size',
-        article_key: 'mtl-rd-md-apl',
-      },
-      {
-        key: 'lg',
-        name: 'Large',
-        selected: false,
-        category: 'Size',
-        article_key: 'mtl-rd-lg-apl',
-      },
-      {
-        key: 'apl',
-        name: 'Apple',
-        selected: true,
-        category: 'Brand',
-        article_key: 'mtl-rd-sm-apl',
-      },
-      {
-        key: 'ms',
-        name: 'Microsoft',
-        selected: false,
-        category: 'Brand',
-        article_key: 'mtl-rd-sm-ms',
-      },
-    ];
+    // this is a temporary buttonMap idea which could be used to create a compariosn wit article json
 
-    console.log(this.buttonMap, this.selectedProduct);
-    console.log(this.buttonMap, this.selectedProduct);
+    // this.buttonMap = [
+    //   {
+    //     key: 'mtl',
+    //     name: 'Metal',
+    //     selected: true,
+    //     category: 'Material',
+    //     article_key: 'mtl-rd-sm-apl',
+    //   },
+    //   {
+    //     key: 'wd',
+    //     name: 'Wood',
+    //     selected: false,
+    //     category: 'Material',
+    //     article_key: 'wd-rd-sm-apl',
+    //   },
+    //   {
+    //     key: 'rd',
+    //     name: 'Red',
+    //     selected: true,
+    //     category: 'Color',
+    //     article_key: 'mtl-rd-sm-apl',
+    //   },
+    //   {
+    //     key: 'grn',
+    //     name: 'Green',
+    //     selected: false,
+    //     category: 'Color',
+    //     article_key: 'mtl-grn-sm-apl',
+    //   },
+    //   {
+    //     key: 'bl',
+    //     name: 'Blue',
+    //     selected: false,
+    //     category: 'Color',
+    //     article_key: 'mtl-bl-sm-apl',
+    //   },
+    //   {
+    //     key: 'sm',
+    //     name: 'Small',
+    //     selected: true,
+    //     category: 'Size',
+    //     article_key: 'mtl-rd-sm-apl',
+    //   },
+    //   {
+    //     key: 'md',
+    //     name: 'Medium',
+    //     selected: false,
+    //     category: 'Size',
+    //     article_key: 'mtl-rd-md-apl',
+    //   },
+    //   {
+    //     key: 'lg',
+    //     name: 'Large',
+    //     selected: false,
+    //     category: 'Size',
+    //     article_key: 'mtl-rd-lg-apl',
+    //   },
+    //   {
+    //     key: 'apl',
+    //     name: 'Apple',
+    //     selected: true,
+    //     category: 'Brand',
+    //     article_key: 'mtl-rd-sm-apl',
+    //   },
+    //   {
+    //     key: 'ms',
+    //     name: 'Microsoft',
+    //     selected: false,
+    //     category: 'Brand',
+    //     article_key: 'mtl-rd-sm-ms',
+    //   },
+    // ];
+
+    console.log(this.buttonMap);
+    console.log(this.selectedProduct);
   }
 
   isVariantSelected(variantKey: string): boolean {
@@ -1170,6 +1171,7 @@ export class AppComponent {
   }
 
   isVariantDisabled(variantKey: string): boolean {
+    // need to come up with a solution which will updated status of all the button based on the status of article provided in productvariants json
     return false;
   }
 
@@ -1188,6 +1190,35 @@ export class AppComponent {
 
     if (selectedButton) {
       selectedButton.selected = true;
+      this.selectedProduct = this.productArticleList2.find(
+        (item: any) => item.article_auto === selectedButton.article_key
+      );
     }
+
+    console.log(this.selectedProduct);
+
+    // here if selectedProuct has status as false can set other relevant proudct as default
+
+    // it won't work right now as there is no default varibles set to comparte products with each other using article key
+
+    //   if (this.selectedProduct && !this.selectedProduct.status) {
+    //     const relevantProduct = this.productArticleList2.find((item: any) => {
+    //       return (
+    //         item.status &&
+    //         ((option === 'Material' && item.material === this.selectedMaterial) ||
+    //           (option === 'Color' && item.color === this.selectedColor) ||
+    //           (option === 'Size' && item.size === this.selectedSize))
+    //       );
+    //     });
+
+    //     if (relevantProduct) {
+    //       const [materialKey, colorKey, sizeKey] =
+    //         relevantProduct.article_auto.split('-');
+    //       this.selectedArticleKey = relevantProduct.article_auto;
+    //       this.selectedMaterialKey = materialKey;
+    //       this.selectedColorKey = colorKey;
+    //       this.selectedSizeKey = sizeKey;
+    //     }
+    //   }
   }
 }
